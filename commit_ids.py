@@ -9,8 +9,12 @@ preprocessed_file_name = '/data/gpfs/projects/punim1928/RISE/JITDP/data/naturaln
 with open(bug_file_name, 'rb') as file:
     bug_commit_ids = pickle.load(file)
 
+bug_commit_ids = [item.split('.')[0] for item in bug_commit_ids]
+
 with open(fix_file_name, 'rb') as file:
     fix_commit_ids = pickle.load(file)
+
+fix_commit_ids = [item.split('.')[0] for item in fix_commit_ids]
 
 with open(preprocessed_file_name, 'rb') as file:
     preprocessed_commits = pickle.load(file)
@@ -26,34 +30,34 @@ ic(len(ids))
 
 ic(labels[:10])
 
-# # Convert the lists to sets
-# set1 = set(bug_commit_ids)
-# set2 = set(fix_commit_ids)
-# set3 = set(ids)
+# Convert the lists to sets
+set1 = set(bug_commit_ids)
+set2 = set(fix_commit_ids)
+set3 = set(ids)
 
-# # Find the common elements
-# common_elements = set3.intersection(set1)
+# Find the common elements
+common_elements = set3.intersection(set1)
 
-# # Get the count of common elements
-# count_common_elements = len(common_elements)
+# Get the count of common elements
+count_common_elements = len(common_elements)
 
-# ic(count_common_elements)
+ic(count_common_elements)
 
-# # Find the common elements
-# common_elements = set3.intersection(set2)
+# Find the common elements
+common_elements = set3.intersection(set2)
 
-# # Get the count of common elements
-# count_common_elements = len(common_elements)
+# Get the count of common elements
+count_common_elements = len(common_elements)
 
-# ic(count_common_elements)
+ic(count_common_elements)
 
 relabels = []
 
 for index, commit_hash in enumerate(ids):
     
-    if commit_hash.split('.')[0] in bug_commit_ids:
+    if commit_hash in bug_commit_ids:
         relabels.append('bug')
-    if commit_hash.split('.')[0] in fix_commit_ids:
+    if commit_hash in fix_commit_ids:
         relabels.append('fix')
 
 ic('bug' in relabels)
