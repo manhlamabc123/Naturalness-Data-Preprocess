@@ -26,23 +26,43 @@ ic(len(ids))
 
 ic(labels[:10])
 
-relabels = []
+# Convert the lists to sets
+set1 = set(bug_commit_ids)
+set2 = set(fix_commit_ids)
+set3 = set(ids)
 
-for index, commit_hash in enumerate(ids):
-    ic(commit_hash)
-    ic(commit_hash in bug_commit_ids)
-    if commit_hash in bug_commit_ids:
-        relabels.append('bug')
-    if commit_hash in fix_commit_ids:
-        relabels.append('fix')
+# Find the common elements
+common_elements = set3.intersection(set1)
 
-ic('bug' in relabels)
-ic('fix' in relabels)
+# Get the count of common elements
+count_common_elements = len(common_elements)
 
-relabeled_commits = [ids, relabels, messages, codes]
+ic(count_common_elements)
 
-ic(relabels[:10])
+# Find the common elements
+common_elements = set3.intersection(set2)
+
+# Get the count of common elements
+count_common_elements = len(common_elements)
+
+ic(count_common_elements)
+
+# relabels = []
+
+# for index, commit_hash in enumerate(ids):
     
-# Export non_standard_commits as a .pkl file
-with open('relabeled_commit_ids.pkl', 'wb') as file:
-    pickle.dump(relabeled_commits, file)
+#     if commit_hash in bug_commit_ids:
+#         relabels.append('bug')
+#     if commit_hash in fix_commit_ids:
+#         relabels.append('fix')
+
+# ic('bug' in relabels)
+# ic('fix' in relabels)
+
+# relabeled_commits = [ids, relabels, messages, codes]
+
+# ic(relabels[:10])
+    
+# # Export non_standard_commits as a .pkl file
+# with open('relabeled_commit_ids.pkl', 'wb') as file:
+#     pickle.dump(relabeled_commits, file)
