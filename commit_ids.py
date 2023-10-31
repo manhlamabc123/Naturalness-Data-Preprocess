@@ -16,7 +16,9 @@ with open(preprocessed_file_name, 'rb') as file:
     preprocessed_commits = pickle.load(file)
 
 ic(len(bug_commit_ids))
+ic(bug_commit_ids[:5])
 ic(len(fix_commit_ids))
+ic(fix_commit_ids[:5])
 
 ids, labels, messages, codes = preprocessed_commits
 
@@ -27,6 +29,8 @@ ic(labels[:10])
 relabels = []
 
 for index, commit_hash in enumerate(ids):
+    ic(commit_hash)
+    ic(commit_hash in bug_commit_ids)
     if commit_hash in bug_commit_ids:
         relabels.append('bug')
     if commit_hash in fix_commit_ids:
