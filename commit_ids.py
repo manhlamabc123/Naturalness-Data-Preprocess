@@ -24,18 +24,20 @@ ic(len(ids))
 
 ic(labels[:10])
 
+relabels = []
+
 for index, commit_hash in enumerate(ids):
     if commit_hash in bug_commit_ids:
-        labels[index] = 'bug'
+        relabels.append('bug')
     if commit_hash in fix_commit_ids:
-        labels[index] = 'fix'
+        relabels.append('fix')
 
-ic('bug' in labels)
-ic('fix' in labels)
+ic('bug' in relabels)
+ic('fix' in relabels)
 
-relabeled_commits = [ids, labels, messages, codes]
+relabeled_commits = [ids, relabels, messages, codes]
 
-ic(labels[:10])
+ic(relabels[:10])
     
 # Export non_standard_commits as a .pkl file
 with open('relabeled_commit_ids.pkl', 'wb') as file:
