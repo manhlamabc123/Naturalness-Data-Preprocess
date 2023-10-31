@@ -72,7 +72,22 @@ ic(relabels.count('fix-bug'))
 ic(relabels.count('normal'))
 
 relabeled_commits = [ids, relabels, messages, codes]
-    
+
+# Split 'relabeled_commits' into three parts (e.g., first 0-10k, 10k-20k, 20k-end)
+relabeled_commits_part1 = [ids[:25000], relabels[:25000], messages[:25000], codes[:25000]]
+relabeled_commits_part2 = [ids[25001:50000], relabels[25001:50000], messages[25001:50000], codes[25001:50000]]
+relabeled_commits_part3 = [ids[500001:], relabels[500001:], messages[500001:], codes[500001:]]
+
+# Export each part as a .pkl file
+with open('relabeled_commits_part1.pkl', 'wb') as file:
+    pickle.dump(relabeled_commits_part1, file)
+
+with open('relabeled_commits_part2.pkl', 'wb') as file:
+    pickle.dump(relabeled_commits_part2, file)
+
+with open('relabeled_commits_part3.pkl', 'wb') as file:
+    pickle.dump(relabeled_commits_part3, file)
+
 # Export non_standard_commits as a .pkl file
 with open('relabeled_commit_ids.pkl', 'wb') as file:
     pickle.dump(relabeled_commits, file)
