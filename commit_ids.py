@@ -20,9 +20,7 @@ with open(preprocessed_file_name, 'rb') as file:
     preprocessed_commits = pickle.load(file)
 
 ic(len(bug_commit_ids))
-ic(bug_commit_ids[:5])
 ic(len(fix_commit_ids))
-ic(fix_commit_ids[:5])
 
 ids, labels, messages, codes = preprocessed_commits
 
