@@ -2,8 +2,11 @@
 
 clear
 
-python main.py \
-    -data_dir /home/manh/Documents/Data/linux-recrawl/bug-fix \
-    -save_dir /home/manh/Documents/Data/linux-recrawl/bug-fix \
+for i in {1..14}
+do
+  python main.py \
+    -data_dir /data/gpfs/projects/punim1928/RISE/JITDP/JIT-DP-DataCrawling/save/linux \
+    -save_dir /data/gpfs/projects/punim1928/RISE/JITDP/data/naturalness/bug-fix \
     -project linux \
-    -file_name repo_commits_2.pkl
+    -file_name "repo_commits_$i.pkl"
+done
