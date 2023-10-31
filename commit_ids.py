@@ -1,5 +1,6 @@
 import pickle
 from icecream import ic
+from tqdm import tqdm
 
 bug_file_name = 'bug_commit_ids.pkl'
 fix_file_name = 'fix_commit_ids.pkl'
@@ -57,7 +58,7 @@ ic(bug_fix)
 
 relabels = []
 
-for index, commit_hash in enumerate(ids):
+for index, commit_hash in enumerate(tqdm(ids)):
     if commit_hash in bug_commit_ids:
         relabels.append('bug')
     if commit_hash in fix_commit_ids:
@@ -68,6 +69,7 @@ for index, commit_hash in enumerate(ids):
 ic(relabels.count('bug'))
 ic(relabels.count('fix'))
 ic(relabels.count('fix-bug'))
+ic(relabels.count('normal'))
 
 relabeled_commits = [ids, relabels, messages, codes]
     
