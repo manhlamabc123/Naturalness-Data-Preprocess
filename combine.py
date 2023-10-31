@@ -45,7 +45,7 @@ def main():
     concated_data = ids, labels, messages, commits
 
     ic(len(ids))
-    ic(pickle.dump(concated_data, open(f"{data_dir}/{project}/linux_normal.pkl", 'wb')))
+    ic(pickle.dump(concated_data, open(f"{data_dir}/{project}/linux_bug-fix.pkl", 'wb')))
 
 if __name__ == "__main__":
     main()
