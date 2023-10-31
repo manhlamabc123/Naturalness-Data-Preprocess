@@ -51,6 +51,14 @@ count_common_elements = len(common_elements)
 
 ic(count_common_elements)
 
+# Find the common elements
+common_elements = set1.intersection(set2)
+
+# Get the count of common elements
+count_common_elements = len(common_elements)
+
+ic(count_common_elements)
+
 relabels = []
 
 for index, commit_hash in enumerate(ids):
