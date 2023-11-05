@@ -106,7 +106,8 @@ def main():
 
                     ic(" ".join(code_changes["after"]))
 
-                hunk['code_changes'].append(code_changes)
+                    hunk['code_changes'].append(code_changes)
+
                 hunks.append(hunk)
 
             ic(hunks)
