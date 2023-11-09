@@ -11,6 +11,7 @@ def read_args():
     parser.add_argument('-save_dir', type=str, default='', help='')
     parser.add_argument('-project', type=str, default='', help='')
     parser.add_argument('-file_name', type=str, default='', help='')
+    parser.add_argument('-context', type=int, default=3, help='')
     parser.add_argument('-debug', action='store_true', help='')
 
     return parser
@@ -21,11 +22,13 @@ def main():
     save_dir = params.save_dir
     project = params.project
     file_name = params.file_name
+    num_context = params.context
     debug = params.debug
 
     ic(data_dir)
     ic(project)
     ic(file_name)
+    ic(num_context)
 
     ids = []
     labels = []
@@ -53,7 +56,7 @@ def main():
                 hunk['file_name'] = file
                 hunk['code_changes'] = []
 
-                processed_diff = process_content(loaded_data[commit_hash]['diff'][file]['content'])
+                processed_diff = process_content(loaded_data[commit_hash]['diff'][file]['content'], surrounding_lines=num_context)
 
                 for file_code in processed_diff:
                     ic(file_code)
