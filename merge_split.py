@@ -1,8 +1,18 @@
-import pickle
+import pickle, argparse
 from icecream import ic
 import pandas as pd
 
-data_dir = '/data/gpfs/projects/punim1928/RISE/JITDP/data/naturalness/context_0'
+def read_args():
+    parser = argparse.ArgumentParser()
+
+    parser.add_argument('-c', '--context', type=int, default=3, help='')
+
+    return parser
+
+params = read_args().parse_args()
+context_line = params.context
+
+data_dir = f'/data/gpfs/projects/punim1928/RISE/JITDP/data/naturalness/context_{context_line}'
 # data_dir = '/home/manh/Documents/Data/naturalness/context_5'
 
 # Load data from the .pkl file

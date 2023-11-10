@@ -1,10 +1,20 @@
-import pickle
+import pickle, argparse
 from icecream import ic
 from tqdm import tqdm
 
+def read_args():
+    parser = argparse.ArgumentParser()
+
+    parser.add_argument('-c', '--context', type=int, default=3, help='')
+
+    return parser
+
+params = read_args().parse_args()
+context_line = params.context
+
 bug_file_name = 'bug_commit_ids.pkl'
 fix_file_name = 'fix_commit_ids.pkl'
-data_dir = '/data/gpfs/projects/punim1928/RISE/JITDP/data/naturalness/context_0/bug_fix'
+data_dir = f'/data/gpfs/projects/punim1928/RISE/JITDP/data/naturalness/context_{context_line}/bug_fix'
 # data_dir = '/home/manh/Documents/Data/naturalness/context_5/bug_fix'
 preprocessed_file_name = f'{data_dir}/linux_bug_fix.pkl'
 
