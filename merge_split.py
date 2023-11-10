@@ -89,6 +89,8 @@ shuffled_df.reset_index(drop=True, inplace=True)
 
 ic(shuffled_df['commit_hash'])
 
+all_ids, all_labels, all_messages, all_commits = shuffled_df['commit_hash'].tolist(), shuffled_df['label'].tolist(), shuffled_df['message'].tolist(), shuffled_df['commit'].tolist()
+
 # Create a DataFrame with 'label' equal to 1
 label_1_df = shuffled_df[shuffled_df['label'] == 1]
 
@@ -183,7 +185,9 @@ ic(len(train_commits))
 train = [train_ids, train_labels, train_messages, train_commits]
 validate = [validate_ids, validate_labels, validate_messages, validate_commits]
 test = [test_ids, test_labels, test_messages, test_commits]
+all = [all_ids, all_labels, all_messages, all_commits]
 
 pickle.dump(train, open(f"{data_dir}/linux_train.pkl", 'wb'))
 pickle.dump(validate, open(f"{data_dir}/linux_val.pkl", 'wb'))
 pickle.dump(test, open(f"{data_dir}/linux_test.pkl", 'wb'))
+pickle.dump(all, open(f"{data_dir}/linux.pkl", 'wb'))
