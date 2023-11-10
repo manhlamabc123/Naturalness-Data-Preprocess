@@ -25,7 +25,7 @@ ic(len(normal_ids))
 
 bonus_df = pd.DataFrame({
     'commit_hash': bonus_ids,
-    # 'message': bonus_messages,
+    'message': bonus_messages,
     'commit': bonus_commits,
     'label': bonus_labels
 })
