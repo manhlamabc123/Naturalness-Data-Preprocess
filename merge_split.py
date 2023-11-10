@@ -170,9 +170,9 @@ ic(calculate_label_ratio(shuffled_part2))
 ic(shuffled_part3.shape)
 ic(calculate_label_ratio(shuffled_part3))
 
-train_ids, train_labels, train_messages, train_commits = shuffled_part1['commit_hash'].tolist(), shuffled_part1['label'].tolist(), [], shuffled_part1['commit'].tolist()
-validate_ids, validate_labels, validate_messages, validate_commits = shuffled_part2['commit_hash'].tolist(), shuffled_part2['label'].tolist(), [], shuffled_part2['commit'].tolist()
-test_ids, test_labels, test_messages, test_commits = shuffled_part3['commit_hash'].tolist(), shuffled_part3['label'].tolist(), [], shuffled_part3['commit'].tolist()
+train_ids, train_labels, train_messages, train_commits = shuffled_part1['commit_hash'].tolist(), shuffled_part1['label'].tolist(), shuffled_part1['message'].tolist(), shuffled_part1['commit'].tolist()
+validate_ids, validate_labels, validate_messages, validate_commits = shuffled_part2['commit_hash'].tolist(), shuffled_part2['label'].tolist(), shuffled_part1['message'].tolist(), shuffled_part2['commit'].tolist()
+test_ids, test_labels, test_messages, test_commits = shuffled_part3['commit_hash'].tolist(), shuffled_part3['label'].tolist(), shuffled_part1['message'].tolist(), shuffled_part3['commit'].tolist()
 
 ic()
 ic(len(train_ids))
