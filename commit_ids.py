@@ -4,8 +4,8 @@ from tqdm import tqdm
 
 bug_file_name = 'bug_commit_ids.pkl'
 fix_file_name = 'fix_commit_ids.pkl'
-# data_dir = '/data/gpfs/projects/punim1928/RISE/JITDP/data/naturalness/fixed'
-data_dir = '/home/manh/Documents/Data/naturalness/context_5/bug_fix'
+data_dir = '/data/gpfs/projects/punim1928/RISE/JITDP/data/naturalness/context_5/bug_fix'
+# data_dir = '/home/manh/Documents/Data/naturalness/context_5/bug_fix'
 preprocessed_file_name = f'{data_dir}/linux_bug_fix.pkl'
 
 # Load data from the .pkl file
