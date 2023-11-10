@@ -2,17 +2,17 @@ import pickle
 from icecream import ic
 import pandas as pd
 
-data_dir = '/data/gpfs/projects/punim1928/RISE/JITDP/data/naturalness/context_3'
-# data_dir = '/home/manh/Documents/Data/naturalness'
+# data_dir = '/data/gpfs/projects/punim1928/RISE/JITDP/data/naturalness/context_3'
+data_dir = '/home/manh/Documents/Data/naturalness/context_5'
 
 # Load data from the .pkl file
-with open(f'{data_dir}/linux_bonus.pkl', 'rb') as file:
+with open(f'{data_dir}/bonus/linux_bonus.pkl', 'rb') as file:
     bonus = pickle.load(file)
 
-with open(f'{data_dir}/linux_bug_fix_relabeled.pkl', 'rb') as file:
+with open(f'{data_dir}/bug_fix/linux_bug_fix_relabeled.pkl', 'rb') as file:
     bug_fix = pickle.load(file)
 
-with open(f'{data_dir}/linux_normal.pkl', 'rb') as file:
+with open(f'{data_dir}/normal/linux_normal.pkl', 'rb') as file:
     normal = pickle.load(file)
 
 bonus_ids, bonus_labels, bonus_messages, bonus_commits = bonus
