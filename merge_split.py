@@ -37,14 +37,14 @@ ic(len(bug_fix_labels))
 
 bug_fix_df = pd.DataFrame({
     'commit_hash': bug_fix_ids,
-    # 'message': bug_fix_messages,
+    'message': bug_fix_messages,
     'commit': bug_fix_commits,
     'label': bug_fix_labels
 })
 
 normal_df = pd.DataFrame({
     'commit_hash': normal_ids,
-    # 'message': normal_messages,
+    'message': normal_messages,
     'commit': normal_commits,
     'label': normal_labels
 })
