@@ -2,8 +2,8 @@ import pickle
 from icecream import ic
 import pandas as pd
 
-# data_dir = '/data/gpfs/projects/punim1928/RISE/JITDP/data/naturalness/context_3'
-data_dir = '/home/manh/Documents/Data/naturalness/context_5'
+data_dir = '/data/gpfs/projects/punim1928/RISE/JITDP/data/naturalness/context_5'
+# data_dir = '/home/manh/Documents/Data/naturalness/context_5'
 
 # Load data from the .pkl file
 with open(f'{data_dir}/bonus/linux_bonus.pkl', 'rb') as file:
