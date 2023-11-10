@@ -1,12 +1,12 @@
 import pickle, argparse
 from icecream import ic
-from tqdm import tqdm
 
 def read_args():
     parser = argparse.ArgumentParser()
 
     parser.add_argument('-data_dir', type=str, default='/home/manh/Documents/Data/splited-tan-dataset')
     parser.add_argument('-project', type=str, default='bootstrap')
+    parser.add_argument('-output_file_name', type=str, default='bootstrap')
     parser.add_argument('-file_names', type=str, default=[], nargs='+')
 
     return parser
@@ -17,10 +17,12 @@ def main():
     data_dir = params.data_dir
     project = params.project
     file_names = params.file_names
+    output_file_name = params.output_file_name
 
     ic(data_dir)
     ic(project)
     ic(file_names)
+    ic(output_file_name)
 
     ids, labels, messages, commits = [], [], [], []
 
@@ -45,7 +47,7 @@ def main():
     concated_data = ids, labels, messages, commits
 
     ic(len(ids))
-    ic(pickle.dump(concated_data, open(f"{data_dir}/{project}/linux_bug-fix.pkl", 'wb')))
+    ic(pickle.dump(concated_data, open(f"{data_dir}/{project}/{output_file_name}.pkl", 'wb')))
 
 if __name__ == "__main__":
     main()

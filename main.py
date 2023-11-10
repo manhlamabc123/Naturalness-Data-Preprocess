@@ -50,6 +50,11 @@ def main():
             labels.append('normal')
             hunks = []
 
+            message = loaded_data[commit_hash]['msg']
+            message = message.strip()
+            message = split_sentence(message)
+            message = ' '.join(message.split(' ')).lower()
+
             for file in loaded_data[commit_hash]['diff'].keys():
                 ic(file)
                 hunk = {}
@@ -83,7 +88,7 @@ def main():
                     ic(after)
                     ic(before)
                     
-                    processed_after, processed_before = [], [] 
+                    processed_after, processed_before = [], []
                     for a_line, b_line in zip(after, before):
                         # ic(a_line)
                         # ic(b_line)
@@ -107,13 +112,12 @@ def main():
                     code_changes['before'] = processed_before
                     code_changes['after'] = processed_after
 
-                    ic(" ".join(code_changes["after"]))
-
                     hunk['code_changes'].append(code_changes)
 
                 hunks.append(hunk)
 
             ic(hunks)
+            messages.append(message)
             commits.append(hunks)
 
             if debug:

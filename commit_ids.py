@@ -4,7 +4,9 @@ from tqdm import tqdm
 
 bug_file_name = 'bug_commit_ids.pkl'
 fix_file_name = 'fix_commit_ids.pkl'
-preprocessed_file_name = '/data/gpfs/projects/punim1928/RISE/JITDP/data/naturalness/fixed/linux_bug_fix.pkl'
+# data_dir = '/data/gpfs/projects/punim1928/RISE/JITDP/data/naturalness/fixed'
+data_dir = '/home/manh/Documents/Data/naturalness'
+preprocessed_file_name = f'{data_dir}/linux_bug_fix.pkl'
 
 # Load data from the .pkl file
 with open(bug_file_name, 'rb') as file:
@@ -59,12 +61,12 @@ ic(bug_fix)
 relabels = []
 
 for index, commit_hash in enumerate(tqdm(ids)):
-    if commit_hash in bug_commit_ids:
-        relabels.append('bug')
-    if commit_hash in fix_commit_ids:
-        relabels.append('fix')
     if (commit_hash in bug_commit_ids) and (commit_hash in fix_commit_ids):
         relabels.append('fix-bug')
+    elif commit_hash in bug_commit_ids:
+        relabels.append('bug')
+    elif commit_hash in fix_commit_ids:
+        relabels.append('fix')
 
 ic(relabels.count('bug'))
 ic(relabels.count('fix'))
@@ -89,5 +91,5 @@ relabeled_commits = [ids, relabels, messages, codes]
 #     pickle.dump(relabeled_commits_part3, file)
 
 # Export non_standard_commits as a .pkl file
-with open('/data/gpfs/projects/punim1928/RISE/JITDP/data/naturalness/fixed/linux_bug_fix_relabeled.pkl', 'wb') as file:
+with open(f'{data_dir}/linux_bug_fix_relabeled.pkl', 'wb') as file:
     pickle.dump(relabeled_commits, file)
