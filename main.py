@@ -44,6 +44,7 @@ def main():
 
     # Load DataFrame from CSV
     df = pd.read_csv(csv)
+    df = df[['_id', 'bug']]
     ic(df.shape)
     ic(df.head(3))
 
@@ -143,7 +144,11 @@ def main():
                 elif commit_hash in fix_commit_ids:
                     labels.append('fix')
                 else:
-                    labels.append('normal')
+                    bug_values = df.loc[df['_id'] == commit_hash, 'bug'].values
+                    if bug_values == 0:
+                        labels.append('non-defect')
+                    else:
+                        labels.append('defect')
             else:
                 labels.append('unknown')
             messages.append(message)

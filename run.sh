@@ -48,9 +48,9 @@ do
     python main.py \
       -data_dir /data/gpfs/projects/punim1928/RISE/JITDP/data/naturalness/raw \
       -save_dir /data/gpfs/projects/punim1928/RISE/JITDP/data/naturalness/context_$i \
-      -project $project \
+      -project ${project} \
       -context $i \
-      -csv_file /data/gpfs/projects/punim1928/RISE/JITDP/data/lapredict-paper/$project/$project_k_feature.csv \
+      -csv /data/gpfs/projects/punim1928/RISE/JITDP/data/lapredict-paper/${project}/${project}_k_feature.csv \
       -file_name "${project}.pkl"
   done
 done
@@ -60,5 +60,15 @@ python main.py \
   -save_dir /data/gpfs/projects/punim1928/RISE/JITDP/data/naturalness/context_1 \
   -project gerrit \
   -context 1 \
+  -file_name "gerrit.pkl" \
+  -debug
+
+
+python main.py \
+  -data_dir /data/gpfs/projects/punim1928/RISE/JITDP/data/naturalness/raw \
+  -save_dir /data/gpfs/projects/punim1928/RISE/JITDP/data/naturalness/context_1 \
+  -project gerrit \
+  -context 1 \
+  -csv /data/gpfs/projects/punim1928/RISE/JITDP/data/lapredict-paper/gerrit/gerrit_k_feature.csv \
   -file_name "gerrit.pkl" \
   -debug
