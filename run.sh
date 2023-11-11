@@ -38,7 +38,7 @@
 
 #!/bin/bash
 
-projects=("gerrit" "go" "jdt" "platform" "openstack" "qt")
+projects=("gerrit" "go" "jdt" "platform" "openstack" "qt" "linux")
 selected_values=(1 3 5 10)
 
 for project in "${projects[@]}"
@@ -50,6 +50,7 @@ do
       -save_dir /data/gpfs/projects/punim1928/RISE/JITDP/data/naturalness/context_$i \
       -project $project \
       -context $i \
+      -csv_file /data/gpfs/projects/punim1928/RISE/JITDP/data/lapredict-paper/$project/$project_k_feature.csv \
       -file_name "${project}.pkl"
   done
 done

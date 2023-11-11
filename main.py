@@ -2,7 +2,7 @@ import argparse, pickle
 from icecream import ic
 from process_diff import *
 from tqdm import tqdm
-
+import pandas as pd
 
 def read_args():
     parser = argparse.ArgumentParser()
@@ -11,6 +11,7 @@ def read_args():
     parser.add_argument('-save_dir', type=str, default='', help='')
     parser.add_argument('-project', type=str, default='', help='')
     parser.add_argument('-file_name', type=str, default='', help='')
+    parser.add_argument('-csv', type=str, default='', help='')
     parser.add_argument('-context', type=int, default=3, help='')
     parser.add_argument('-debug', action='store_true', help='')
 
@@ -24,6 +25,7 @@ def main():
     file_name = params.file_name
     num_context = params.context
     debug = params.debug
+    csv = params.csv
 
     ic(data_dir)
     ic(project)
@@ -39,6 +41,11 @@ def main():
 
     with open('fix_bug_commit_ids.pkl', 'rb') as file:
         fix_bug_commit_ids = pickle.load(file)
+
+    # Load DataFrame from CSV
+    df = pd.read_csv(csv)
+    ic(df.shape)
+    ic(df.head(3))
 
     ids = []
     labels = []
