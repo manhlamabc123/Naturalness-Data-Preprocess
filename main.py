@@ -144,13 +144,13 @@ def main():
                 elif commit_hash in fix_commit_ids:
                     labels.append('fix')
                 else:
-                    bug_values = df.loc[df['_id'] == commit_hash, 'bug'].values
-                    if bug_values == 0:
-                        labels.append('non-defect')
-                    else:
-                        labels.append('defect')
+                    labels.append('normal')
             else:
-                labels.append('unknown')
+                bug_values = df.loc[df['_id'] == commit_hash, 'bug'].values
+                if bug_values == 0:
+                    labels.append('non-defect')
+                else:
+                    labels.append('defect')
             messages.append(message)
             commits.append(hunks)
 
