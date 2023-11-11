@@ -30,6 +30,16 @@ def main():
     ic(file_name)
     ic(num_context)
 
+    # Load data from the .pkl file
+    with open('bug_commit_ids.pkl', 'rb') as file:
+        bug_commit_ids = pickle.load(file)
+
+    with open('fix_commit_ids.pkl', 'rb') as file:
+        fix_commit_ids = pickle.load(file)
+
+    with open('fix_bug_commit_ids.pkl', 'rb') as file:
+        fix_bug_commit_ids = pickle.load(file)
+
     ids = []
     labels = []
     messages = []
@@ -47,8 +57,9 @@ def main():
         for commit_hash in tqdm(loaded_data.keys()):
             ic(commit_hash)
             ids.append(commit_hash)
-            labels.append('normal')
             hunks = []
+
+            ic(loaded_data[commit_hash].eys())
 
             message = loaded_data[commit_hash]['msg']
             message = message.strip()
@@ -117,6 +128,15 @@ def main():
                 hunks.append(hunk)
 
             ic(hunks)
+            if project == 'linux':
+                if commit_hash in fix_bug_commit_ids:
+                    labels.append('fix-bug')
+                elif commit_hash in bug_commit_ids:
+                    labels.append('bug')
+                elif commit_hash in fix_commit_ids:
+                    labels.append('fix')
+                else:
+                    labels.append('normal')
             messages.append(message)
             commits.append(hunks)
 
