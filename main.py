@@ -59,7 +59,7 @@ def main():
             ids.append(commit_hash)
             hunks = []
 
-            ic(loaded_data[commit_hash].eys())
+            ic(loaded_data[commit_hash].keys())
 
             message = loaded_data[commit_hash]['msg']
             message = message.strip()

@@ -55,9 +55,9 @@ do
 done
 
 python main.py \
-      -data_dir /data/gpfs/projects/punim1928/RISE/JITDP/data/naturalness/raw \
-      -save_dir /data/gpfs/projects/punim1928/RISE/JITDP/data/naturalness/context_1 \
-      -project gerrit \
-      -context 1 \
-      -file_name "gerrit.pkl" \
-      -debug
+  -data_dir /data/gpfs/projects/punim1928/RISE/JITDP/data/naturalness/raw \
+  -save_dir /data/gpfs/projects/punim1928/RISE/JITDP/data/naturalness/context_1 \
+  -project gerrit \
+  -context 1 \
+  -file_name "gerrit.pkl" \
+  -debug
