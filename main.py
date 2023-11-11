@@ -137,6 +137,8 @@ def main():
                     labels.append('fix')
                 else:
                     labels.append('normal')
+            else:
+                labels.append('unknown')
             messages.append(message)
             commits.append(hunks)
 
